@@ -9,6 +9,14 @@ function String setAccountStatus(Account acct, String status) {
     acct.setStatus(status);
     return acct.getStatus();  
 }
+
+//does not support Generics in function
+//function String testGenerics(Customer<Account> cust) {
+//this works, cast inside the function if needed
+function String testGenerics(Customer cust) {
+	return cust.getAccount().getClass().toString();
+	
+} 
  
 rule "accountBalanceInsufficient"
 
