@@ -1,0 +1,45 @@
+package rules
+import com.redhat.app.model.Account
+import com.redhat.app.model.SpecialAccount;
+import com.redhat.app.model.OrdinaryAccount;
+
+rule "accountBalanceSuffcient-Special-1"
+salience 10
+agenda-group "accountrules2"
+when
+  $customer: Customer(
+  	$account: account instanceof SpecialAccount, 
+  	$account.balance > 50, 
+  	$account#SpecialAccount.monthlyInterest>0)
+  then
+  System.out.println("Agenda-group accountrules2 invoked, saliance 10");
+  System.out.println("Account status: "+ setAccountStatus($account,'special-1'));
+end
+
+
+rule "accountBalanceSuffcient-Special-2"
+salience -5
+agenda-group "accountrules2"
+when
+  $customer: Customer(
+  	$account: account instanceof SpecialAccount, 
+  	$account.balance > 50, 
+  	$account#SpecialAccount.monthlyInterest>0)
+  then
+  System.out.println("Agenda-group accountrules2 invoked, saliance -5");
+  System.out.println("Account status: "+ setAccountStatus($account,'special-2'));
+end
+
+//Ordinary Account rule
+rule "accountBalanceSuffcient-Ordinary-3" 
+salience 100
+agenda-group "accountrules2"
+when
+  $customer: Customer(
+  	$account: account instanceof OrdinaryAccount, 
+  	$account.balance > 50, 
+  	$account#OrdinaryAccount.yearlyInterest>0)
+  then
+  System.out.println("Agenda-group accountrules2 invoked, saliance 100");
+  System.out.println("Account status: "+ setAccountStatus($account,'ordinary-3'));
+end

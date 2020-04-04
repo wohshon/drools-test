@@ -1,0 +1,5 @@
+com/redhat/app/model/Account.class
+com/redhat/app/model/SpecialAccount.class
+com/redhat/app/App.class
+com/redhat/app/model/OrdinaryAccount.class
+com/redhat/app/model/Customer.class

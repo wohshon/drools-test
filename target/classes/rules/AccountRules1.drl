@@ -1,0 +1,81 @@
+package rules;
+import com.redhat.app.model.Account;
+import com.redhat.app.model.OrdinaryAccount;
+import com.redhat.app.model.SpecialAccount;
+import com.redhat.app.model.Customer;
+
+
+function String setAccountStatus(Account acct, String status) {  
+    acct.setStatus(status);
+    return acct.getStatus();  
+}
+ 
+rule "accountBalanceInsufficient"
+
+when
+  //check if account is OrdinaryAccount, bal < 100, yearly interest > 0
+  $customer: Customer(
+  	$account: account instanceof OrdinaryAccount, 
+  	$account.balance < 100, 
+  	$account#OrdinaryAccount.yearlyInterest>0)
+  then
+  System.out.println("Account type: "+$account);
+  System.out.println("Account status: "+ setAccountStatus($account, "low"));
+  //System.out.println("Account status: "+$customer.getName());
+end
+
+
+rule "accountBalanceSuffcient-Ordinary-1" 
+salience 20
+agenda-group "accountrules1"
+when
+  $customer: Customer(
+  	$account: account instanceof OrdinaryAccount, 
+  	$account.balance > 50, 
+  	$account#OrdinaryAccount.yearlyInterest>0)
+  then
+  System.out.println("Agenda-group accountrules1 invoked, saliance 20");
+  System.out.println("Account status: "+ setAccountStatus($account,'ordinary-1'));
+end
+
+
+rule "accountBalanceSuffcient-Ordinary-2" 
+salience 50
+agenda-group "accountrules1"
+when
+  $customer: Customer(
+  	$account: account instanceof OrdinaryAccount, 
+  	$account.balance > 50, 
+  	$account#OrdinaryAccount.yearlyInterest>0)
+  then
+  System.out.println("Agenda-group accountrules1 invoked, saliance 50");
+  System.out.println("Account status: "+ setAccountStatus($account,'ordinary-2'));
+end
+
+rule "accountBalanceSuffcient-Special-3"
+salience 30
+agenda-group "accountrules1"
+when
+  $customer: Customer(
+  	$account: account instanceof SpecialAccount, 
+  	$account.balance > 50, 
+  	$account#SpecialAccount.monthlyInterest>0)
+  then
+  System.out.println("Agenda-group accountrules1 invoked, saliance 30");
+  System.out.println("Account status: "+ setAccountStatus($account,'special-3'));
+end
+
+//will be invoked in either cases
+rule "accountBalanceSuffcient-SpecialOrdinary-1"
+salience 45
+agenda-group "accountrules1"
+when
+  $customer: Customer( $account: account)
+  Customer( 
+		$account instanceof SpecialAccount || $account instanceof OrdinaryAccount,  		
+  		$account.balance > 50, 
+  		$account#OrdinaryAccount.yearlyInterest>0 || $account#SpecialAccount.monthlyInterest>0) from $customer
+  then
+  System.out.println("Agenda-group accountrules1 invoked, saliance 45 ");
+  System.out.println("Account status: "+ setAccountStatus($account,'specialordinary-1'));
+end
