@@ -7,7 +7,9 @@ Client (App.java) is setup to run rules in AccountRules1.drl followed by Account
 
 Order within drl file is managed via saliance value
 
-Data Object uses Generics and the class type; child variables are retrieved in the drl files 
+Data Object:
+
+`Customer.java` has a Generic attribute of `Account` type (with subclasses `OrdinaryAccount` & `SpecialAccount`). Use `instanceof` keyword to match the correct class type and attribute in the drl file.
 
 Output :
 
