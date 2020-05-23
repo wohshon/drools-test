@@ -1,7 +1,12 @@
 ###	Sample drools project to test out agenda-flow, salience and using Generics
 
 
-	mvn clean package exec:java -Dmaven.test.skip=true
+	mvn clean package exec:java -Dmaven.test.skip=true -Dexec.mainClass="com.redhat.app.App"
+
+or for CEP 
+
+		mvn clean package exec:java -Dmaven.test.skip=true -Dexec.mainClass="com.redhat.app.CEPApp"
+
 
 Client (App.java) is setup to run rules in AccountRules1.drl followed by AccountRules2.drl using agenda-group
 

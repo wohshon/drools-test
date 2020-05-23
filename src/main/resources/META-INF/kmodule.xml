@@ -3,6 +3,9 @@
     <kbase name="rules" packages="rules">
         <ksession name="ksession-rules"/>
     </kbase>
+    <kbase name="ceprules" packages="ceprules">
+        <ksession name="cep-rules"/>
+    </kbase>
     <!-- 
     <kbase name="dtables" packages="dtables">
         <ksession name="ksession-dtables"/>
