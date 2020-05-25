@@ -10,11 +10,12 @@ or for CEP
 #### Complex Event Processing Test case:
 
 Client (CEPApp.java) is setup to run rules in AccountRulesCEP.drl 
-
 Generates 50 ATM activity events, 5 fraudent ATM activity events (same accound Id, different ATM locations)
-
 Number of activities are adjustable.
-
+```
+    private static int NUM_OF_RECORDS=50;
+    private static int[] fraudlist = {4,5,9,12,34};
+```
 drl will detect 2 activities across different locations within a 10m windows and raise an alert
 
 ```
@@ -42,9 +43,7 @@ inserting event id: ftx_12 location: WEST customer:acct_12 amount:1000
 #### Salience, agenda flow test cases:
 
 Client (App.java) is setup to run rules in AccountRules1.drl followed by AccountRules2.drl using agenda-group
-
 Order within drl file is managed via saliance value
-
 Data Object:
 
 `Customer.java` has a Generic attribute of `Account` type (with subclasses `OrdinaryAccount` & `SpecialAccount`). Use `instanceof` keyword to match the correct class type and attribute in the drl file.
