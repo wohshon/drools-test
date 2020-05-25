@@ -1,4 +1,5 @@
 <factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/kie/kie-api/7.30.0.Final-redhat-00003/kie-api-7.30.0.Final-redhat-00003.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/kie/soup/kie-soup-maven-support/7.30.0.Final-redhat-00003/kie-soup-maven-support-7.30.0.Final-redhat-00003.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/drools/drools-core/7.30.0.Final-redhat-00003/drools-core-7.30.0.Final-redhat-00003.jar" enabled="true" runInBatchMode="false"/>

@@ -4,8 +4,8 @@ public class SpecialAccount extends Account {
 
 	private double monthlyInterest;
 	
-	public SpecialAccount(int balance, double monthlyInterest) {
-		super(balance);
+	public SpecialAccount(int balance, double monthlyInterest, String id) {
+		super(balance,id);
 		this.setMonthlyInterest(monthlyInterest);
 	}
 	

@@ -24,7 +24,7 @@ public class App
             // testcase1
             System.out.println("***Test with Ordinary account, accountrules2 should be invoked first, followed by salience****");
             Customer<OrdinaryAccount> c1= new Customer<OrdinaryAccount>("John");
-            OrdinaryAccount account = new OrdinaryAccount(200,1.5);
+            OrdinaryAccount account = new OrdinaryAccount(200,1.5, "acc1");
             c1.setAccount(account);
             //Account account = new Account(200);
             account.withdraw(50);
@@ -37,7 +37,7 @@ public class App
             // testcase2
             System.out.println("****Test with special account, accountrules1 should be invoked first, followed by salience****");
             Customer<SpecialAccount> c2= new Customer<SpecialAccount>("Jack");
-            SpecialAccount account1 = new SpecialAccount(200,1.5);
+            SpecialAccount account1 = new SpecialAccount(200,1.5,"acc2");
             account1.withdraw(50);
             c2.setAccount(account1);
 //            kSession = kContainer.newKieSession("ksession-rules");

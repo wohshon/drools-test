@@ -1,28 +1,22 @@
 package com.redhat.app.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public abstract class Account {
 
     private Integer balance;
-    private String status;    
+    private String status;
+    private String accountId;    
     
-    public Account() {}
-    public Integer getBalance() {
-        return balance;
-    }
-    public void setBalance(Integer balance) {
-        this.balance = balance;
-    }
-
-    public void setStatus(String status) {
-        this.status=status;
-    }
-
-    public String getStatus() {
-	return this.status;
-    }
-    public Account(Integer balance) {
+    public Account(Integer balance, String accountId) {
         super();
         this.balance = balance;
+        this.accountId = accountId;
     }
     public void withdraw(int money) {
         balance -= money;

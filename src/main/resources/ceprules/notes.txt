@@ -1,0 +1,23 @@
+rule "Multiple ATM usage"
+when
+  //Transaction($cu : customer.account#OrdinaryAccount.yearlyInterest>0, $amt : amount > 10) //from entry-point "ATM Stream"
+  //Transaction(  ) from entry-point "ATM Stream"
+  //ok
+  //  Transaction(  )
+Transaction($cu : customer.account#OrdinaryAccount.yearlyInterest>0, $amt : amount > 10) from entry-point "ATM Stream"
+then
+  // authorize withdraw
+  System.out.println("ok");
+end
+
+rule "Authorize Withdraw test"
+when
+  //Transaction($cu : customer.account#OrdinaryAccount.yearlyInterest>0, $amt : amount > 10) //from entry-point "ATM Stream"
+  //Transaction(  ) from entry-point "ATM Stream"
+  //ok
+  //  Transaction(  )
+  Transaction( $amt : amount < 10) from entry-point "ATM Stream"
+then
+  // authorize withdraw
+  System.out.println("Not ok");
+end

@@ -3,7 +3,7 @@
     <kbase name="rules" packages="rules">
         <ksession name="ksession-rules"/>
     </kbase>
-    <kbase name="ceprules" packages="ceprules">
+    <kbase name="ceprules" eventProcessingMode="stream" packages="ceprules">
         <ksession name="cep-rules"/>
     </kbase>
     <!-- 
