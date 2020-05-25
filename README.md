@@ -17,6 +17,27 @@ Number of activities are adjustable.
 
 drl will detect 2 activities across different locations within a 10m windows and raise an alert
 
+```
+inserting event id: tx_45 location: NORTH customer:acct_45 amount:80
+audit rule 1 acct_45
+inserting event id: tx_46 location: WEST customer:acct_46 amount:378
+audit rule 1 acct_46
+inserting event id: tx_47 location: NORTH customer:acct_47 amount:45
+audit rule 1 acct_47
+inserting event id: ftx_34 location: NORTH customer:acct_34 amount:1000
+
+Detected potential fraud for the following activities: 
+ATM tx1 : id: tx_34 location: WEST customer:acct_34 amount:602
+ATM tx2 : id: ftx_34 location: NORTH customer:acct_34 amount:1000
+!!!! Registered fraud event!!!!
+
+ATM activity at 2 locations detected for account:  acct_34
+
+inserting event id: tx_48 location: WEST customer:acct_48 amount:460
+audit rule 1 acct_48
+inserting event id: ftx_12 location: WEST customer:acct_12 amount:1000
+
+```
 
 #### Salience, agenda flow test cases:
 
