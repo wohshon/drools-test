@@ -1,4 +1,4 @@
-###	Sample drools project to test out agenda-flow, salience and using Generics
+###	Sample drools project to test out agenda-flow, salience and using Generics and Complex Events Processing
 
 
 	mvn clean package exec:java -Dmaven.test.skip=true -Dexec.mainClass="com.redhat.app.App"
@@ -7,6 +7,18 @@ or for CEP
 
 		mvn clean package exec:java -Dmaven.test.skip=true -Dexec.mainClass="com.redhat.app.CEPApp"
 
+#### Complex Event Processing Test case:
+
+Client (CEPApp.java) is setup to run rules in AccountRulesCEP.drl 
+
+Generates 50 ATM activity events, 5 fraudent ATM activity events (same accound Id, different ATM locations)
+
+Number of activities are adjustable.
+
+drl will detect 2 activities across different locations within a 10m windows and raise an alert
+
+
+#### Salience, agenda flow test cases:
 
 Client (App.java) is setup to run rules in AccountRules1.drl followed by AccountRules2.drl using agenda-group
 
