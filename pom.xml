@@ -8,7 +8,7 @@
   <name>myrules</name>
   <url>http://maven.apache.org</url>
 <properties>
-      <runtime.version>7.30.0.Final-redhat-00003</runtime.version>
+      <runtime.version>7.60.0.Final</runtime.version>
 </properties>
   <dependencies>
 <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
